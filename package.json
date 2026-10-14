@@ -1,8 +1,7 @@
 {
-  "name": "tarotcuabin",
+  "name": "meridian-tarot",
   "version": "1.0.0",
-  "description": "Tarot Cuabin: Full 78-Card AR Reading with Three.js, MediaPipe, and Claude Haiku 5.5",
-  "main": "server.js",
+  "description": "Meridian Tarot: Full 78-Card AR Reading with Three.js, MediaPipe, and Claude Haiku 5.5",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
@@ -15,6 +14,6 @@
     "ar",
     "vercel"
   ],
-  "author": "binnanee",
+  "author": "Erik9910x",
   "license": "MIT"
 }
