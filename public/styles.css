@@ -1,0 +1,1067 @@
+/* ==========================================================================
+   Meridian Tarot — Complete Stylesheet
+   Dual-Font Architecture:
+   - English: Vintage Display "Fraunces" (Font lạ, nghệ thuật cho từ tiếng Anh)
+   - Vietnamese: "Be Vietnam Pro" & "Lora" (100% Full Vietnamese Unicode, Hoàn hảo không lỗi font)
+   - UI / Buttons: "Inter" (Nét chữ sắc sảo, dứt khoát)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Fraunces:opsz,wght@9..144,400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   LOCAL HIGH-PERFORMANCE FONTS (100% VIETNAMESE UNICODE FULL & OFFLINE)
+   ========================================================================== */
+
+/* 1. English Vintage Display (Fraunces — Giữ font lạ nghệ thuật cho tiếng Anh) */
+@font-face {
+  font-family: 'Fraunces Local';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('assets/fonts/fraunces-lat-600.woff2') format('woff2');
+}
+
+/* 2. Be Vietnam Pro (Font chuyên biệt cho tiếng Việt — 100% Full Unicode không bao giờ lỗi) */
+@font-face {
+  font-family: 'Be Vietnam Pro Local';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/be-vietnam-pro-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro Local';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('assets/fonts/be-vietnam-pro-medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro Local';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('assets/fonts/be-vietnam-pro-semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro Local';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/be-vietnam-pro-bold.ttf') format('truetype');
+}
+
+/* 3. Lora Full Unicode (Trang trọng, quý phái, file gốc đầy đủ glyphs) */
+@font-face {
+  font-family: 'Lora Full Local';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/lora-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lora Full Local';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('assets/fonts/lora-semibold.ttf') format('truetype');
+}
+
+/* 4. Merriweather Full Unicode */
+@font-face {
+  font-family: 'Merriweather Local';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/merriweather-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Merriweather Local';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/merriweather-bold.ttf') format('truetype');
+}
+
+:root {
+  /* Meridian Palette Tokens */
+  --paper: #ebeee7;      /* pale sage page background */
+  --paper-card: #f4f6f1; /* elevated card paper */
+  --ink: #2b3a30;        /* engraving dark green */
+  --ink-soft: #3d4a41;   /* tagline / secondary text */
+  --muted: #6b746c;      /* copyright & captions */
+  --gold-accent: #c5a059;/* warm gold engraving touch */
+  --gold-glow: rgba(197, 160, 89, 0.35);
+  --border-ink: rgba(43, 58, 48, 0.2);
+  --border-ink-strong: rgba(43, 58, 48, 0.4);
+  
+  /* Font Family Mapping */
+  /* 1. English vintage display (Font lạ dành riêng cho chữ tiếng Anh) */
+  --font-en-display: 'Fraunces Local', "Fraunces", Georgia, serif;
+  
+  /* 2. Vietnamese Prestige Serif / Heading (Trang trọng, quý phái, 100% chuẩn Unicode tiếng Việt) */
+  --font-vn-serif: 'Be Vietnam Pro Local', 'Be Vietnam Pro', 'Lora Full Local', 'Merriweather Local', sans-serif;
+  
+  /* 3. Card Name Vietnamese (Đặc biệt hoàn hảo cho "Bốn Cốc", "Nữ Hoàng Kiếm", "Kẻ Khờ"...) */
+  --font-vn-card: 'Be Vietnam Pro Local', 'Be Vietnam Pro', 'Lora Full Local', 'Merriweather Local', sans-serif;
+  
+  /* 4. Vietnamese Title / Headings */
+  --font-vn-title: 'Be Vietnam Pro Local', 'Be Vietnam Pro', 'Lora Full Local', 'Merriweather Local', sans-serif;
+  
+  /* 5. UI Sans-serif (Rõ ràng, dứt khoát, chuẩn diacritics cho các nút bấm & form) */
+  --font-sans: 'Inter', 'Be Vietnam Pro Local', system-ui, -apple-system, sans-serif;
+  
+  /* Radii & Transitions */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   PHASE 0: MERIDIAN LANDING PAGE
+   ========================================================================== */
+
+#landing-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--paper);
+  isolation: isolate;
+  z-index: 100;
+}
+
+/* Background Viaduct Video */
+.footer__video {
+  order: 2;
+  flex: 1 1 0;
+  min-height: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -12vh;
+  margin-top: -12svh;
+  object-fit: cover;
+  object-position: 50% 35%;
+  mix-blend-mode: multiply;
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Content Block */
+.footer__content {
+  order: 1;
+  flex: none;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(24px, 2.5vw, 36px) 16px 0;
+}
+
+/* (a) Compass Logo */
+.footer__mark {
+  width: clamp(44px, 4.1vw, 54px);
+  height: auto;
+  color: var(--ink);
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.footer__mark:hover {
+  transform: rotate(45deg);
+}
+
+/* (b) Wordmark (Font lạ Fraunces cho chữ tiếng Anh) */
+.footer__brand {
+  margin: clamp(6px, 0.9vw, 12px) 0 0;
+  font-family: var(--font-en-display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 72;
+  font-size: clamp(38px, 3.8vw, 50px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.footer__brand a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* (c) Tagline */
+.footer__tagline {
+  margin: clamp(12px, 1.3vw, 16px) 0 0;
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 48em;
+}
+
+/* Call to Action: Xem Tarot Ngay */
+.landing-cta-wrapper {
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+.btn-landing-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: clamp(12px, 1.2vw, 15px) clamp(28px, 2.8vw, 38px);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 40px;
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.2vw, 16.5px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 18px rgba(43, 58, 48, 0.25);
+}
+
+.btn-landing-cta:hover {
+  background: var(--ink-soft);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(43, 58, 48, 0.35);
+}
+
+.btn-landing-cta span {
+  color: var(--gold-accent);
+}
+
+/* (e) Copyright (Font lạ cho chữ tiếng Anh) */
+.footer__copy {
+  margin: clamp(16px, 1.8vw, 24px) 0 0;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   PHASE 1: QUESTION INPUT SCREEN
+   ========================================================================== */
+
+#phase-1-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #edf0e9 0%, #dce1d6 100%);
+  padding: 20px;
+}
+
+.phase-1-card {
+  width: 100%;
+  max-width: 620px;
+  background: var(--paper-card);
+  border: 1px solid var(--border-ink-strong);
+  outline: 4px solid rgba(43, 58, 48, 0.05);
+  border-radius: var(--radius-md);
+  padding: 42px 38px;
+  box-shadow: 0 20px 50px rgba(43, 58, 48, 0.15);
+  text-align: center;
+  animation: modalEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+}
+
+.btn-back-home {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.btn-back-home:hover {
+  color: var(--ink);
+}
+
+.phase-1-brand-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding: 4px 14px;
+  border: 1px solid var(--border-ink);
+  border-radius: 30px;
+  background: rgba(43, 58, 48, 0.05);
+}
+
+.phase-1-title {
+  font-family: var(--font-vn-serif);
+  font-size: 2.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.phase-1-desc {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 500px;
+  margin: 0 auto 28px;
+  line-height: 1.65;
+}
+
+.question-input-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.question-textarea {
+  width: 100%;
+  height: 130px;
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.question-textarea:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(43, 58, 48, 0.12);
+}
+
+.question-textarea::placeholder {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.char-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.phase-1-disclaimer {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.btn-meridian {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 30px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-sm);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(43, 58, 48, 0.2);
+}
+
+.btn-meridian:hover:not(:disabled) {
+  background: var(--ink-soft);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(43, 58, 48, 0.3);
+}
+
+.btn-meridian:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   PHASE 2: 3D AR CARD DRAW SCREEN
+   ========================================================================== */
+
+#phase-2-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: none;
+  background: #060807;
+}
+
+#canvas-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#input-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: -10;
+  pointer-events: none;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#counter {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  color: var(--paper);
+  font-weight: 600;
+  border: 1px solid rgba(235, 238, 231, 0.3);
+  padding: 8px 24px;
+  border-radius: 40px;
+  background: rgba(43, 58, 48, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1.5px;
+}
+
+#guide-text {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-sans);
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transition: opacity 0.4s;
+  font-size: 0.95rem;
+  padding: 0 20px;
+}
+
+#credit-text {
+  position: absolute;
+  bottom: 8px;
+  right: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-en-display);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+#virtual-cursor {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(235, 238, 231, 0.95);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 100;
+  display: none;
+  transition: transform 0.08s ease-out;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+#virtual-cursor.pinching {
+  background: #fff;
+  width: 16px;
+  height: 16px;
+  border: none;
+  box-shadow: 0 0 25px #fff, 0 0 45px #fff;
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+/* ==========================================================================
+   PHASE 3: AI READING RESULT SCREEN (MERIDIAN EDITORIAL)
+   ========================================================================== */
+
+#phase-3-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 60;
+  display: none;
+  background: var(--paper);
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+
+#result-content {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.reading-result-container {
+  background: var(--paper-card);
+  border: 1px solid var(--border-ink);
+  outline: 6px solid rgba(43, 58, 48, 0.04);
+  border-radius: var(--radius-md);
+  padding: 45px 40px;
+  box-shadow: 0 20px 60px rgba(43, 58, 48, 0.12);
+  animation: modalEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Result Top Bar: Brand left + Support Me right */
+.result-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-ink);
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.result-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+
+.brand-compass-icon {
+  color: var(--gold-accent);
+  font-size: 1.1rem;
+}
+
+.brand-wordmark {
+  font-family: var(--font-en-display); /* Font lạ Fraunces cho chữ tiếng Anh */
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.btn-support-me {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: rgba(43, 58, 48, 0.08);
+  border: 1px solid var(--border-ink-strong);
+  border-radius: 30px;
+  color: var(--ink);
+  font-family: var(--font-en-display); /* Font lạ cho tiếng Anh */
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-support-me:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(43, 58, 48, 0.25);
+}
+
+.btn-support-me span {
+  color: var(--gold-accent);
+}
+
+/* Question Recap */
+.question-recap {
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-left: 4px solid var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-bottom: 35px;
+}
+
+.recap-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.recap-content {
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Header & Overview */
+.reading-header-block {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border-ink);
+  padding-bottom: 25px;
+}
+
+.reading-title {
+  font-family: var(--font-vn-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.reading-overview {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Three Cards Grid */
+.reading-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.reading-card-col {
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(43, 58, 48, 0.05);
+}
+
+.reading-card-col:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(43, 58, 48, 0.12);
+}
+
+.card-col-header {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.pos-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--ink);
+  padding: 4px 12px;
+  background: rgba(43, 58, 48, 0.08);
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+
+.pos-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.card-image-wrap {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.reading-card-img {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 2 / 3.5;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-ink);
+  box-shadow: 0 6px 18px rgba(43, 58, 48, 0.15);
+}
+
+/* Card Name Vietnamese (Font Lora / Playfair Local: Chuẩn 100% Unicode tiếng Việt cho "Bốn Cốc", "Kẻ Khờ"...) */
+.card-name-vi {
+  font-family: var(--font-vn-card);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+/* Card Name English (Giữ font lạ Fraunces cho chữ tiếng Anh) */
+.card-name-en {
+  font-family: var(--font-en-display);
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 12px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.card-interpretation {
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  text-align: justify;
+}
+
+/* Synthesis */
+.reading-synthesis-block {
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-left: 4px solid var(--gold-accent);
+  border-radius: var(--radius-md);
+  padding: 26px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px rgba(43, 58, 48, 0.05);
+}
+
+.synthesis-title {
+  font-family: var(--font-vn-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.synthesis-text {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Guidance Grid */
+.reading-guidance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.guidance-box {
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(43, 58, 48, 0.05);
+}
+
+.guidance-box h5 {
+  font-family: var(--font-vn-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.guidance-box p {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.reading-action-row {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-restart {
+  max-width: 280px;
+}
+
+/* Loading & Error States */
+.reading-loading-state, .reading-error-state {
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.mystic-compass-spinner {
+  display: inline-block;
+  color: var(--ink);
+  margin-bottom: 20px;
+  animation: spinSlow 8s linear infinite;
+}
+
+.loading-title {
+  font-family: var(--font-vn-serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.loading-subtitle {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  font-size: 2.5rem;
+  color: var(--ink);
+  margin-bottom: 15px;
+}
+
+.error-title {
+  font-family: var(--font-vn-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.error-desc {
+  color: var(--ink-soft);
+  max-width: 500px;
+  margin: 0 auto 25px;
+}
+
+.btn-retry {
+  max-width: 220px;
+}
+
+/* ==========================================================================
+   SUPPORT ME MODAL POPUP
+   ========================================================================== */
+
+.support-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: rgba(43, 58, 48, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.support-modal-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.support-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: var(--paper-card);
+  border: 1px solid var(--border-ink-strong);
+  outline: 4px solid rgba(43, 58, 48, 0.08);
+  border-radius: var(--radius-md);
+  padding: 35px 30px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-modal-backdrop.is-active .support-modal-card {
+  transform: translateY(0);
+}
+
+.support-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.support-modal-close:hover {
+  color: var(--ink);
+}
+
+.support-modal-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--ink);
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border: 1px solid var(--border-ink);
+  border-radius: 20px;
+  margin-bottom: 12px;
+  background: rgba(43, 58, 48, 0.05);
+}
+
+.support-modal-title {
+  font-family: var(--font-vn-serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.support-modal-desc {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.support-img-wrapper {
+  margin: 0 auto 18px;
+  width: 220px;
+  height: 220px;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(43, 58, 48, 0.12);
+}
+
+.support-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.support-modal-note {
+  font-size: 0.98rem;
+  color: var(--ink);
+  font-family: var(--font-vn-serif);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 860px) {
+  .reading-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .reading-guidance-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .reading-result-container {
+    padding: 25px 20px;
+  }
+  .phase-1-card {
+    padding: 30px 20px;
+  }
+  .phase-1-title {
+    font-size: 1.7rem;
+  }
+  #counter {
+    top: 15px;
+    right: 15px;
+    font-size: 1rem;
+    padding: 6px 18px;
+  }
+}
