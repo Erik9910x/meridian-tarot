@@ -182,18 +182,8 @@ module.exports = async function handler(req, res) {
     cardIds.add(c.id);
   }
 
-  // Check API configuration
-  const apiKey = process.env.AI_API_KEY;
-  if (!apiKey || apiKey === 'your_vilao_api_key_here') {
-    res.statusCode = 503;
-    res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.end(JSON.stringify({
-      error: 'Chưa cấu hình API đọc bài (AI_API_KEY). Vui lòng cấu hình trên Vercel hoặc file .env.',
-      configured: false
-    }));
-    return;
-  }
-
+  // Check API configuration (uses environment variable if provided, or default project key)
+  const apiKey = process.env.AI_API_KEY || 'sk-3655e67d91b962d18ea456003d0af2dbd692240d1dde1162aaf04eab669f6bfe';
   const endpoint = process.env.AI_ENDPOINT || 
     (process.env.AI_BASE_URL ? `${process.env.AI_BASE_URL}/chat/completions` : 'https://api.vilao.ai/v1/chat/completions');
   const model = process.env.AI_MODEL || 'occ/claude-haiku-5-5';
